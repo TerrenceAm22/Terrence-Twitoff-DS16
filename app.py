@@ -3,26 +3,31 @@
 from flask import Flask, render_template
 from .models import DB, User
 
+from flask import Flask, render_template
+from .models import DB, User, add_test_users
+
+
 def create_app():
     """Create and configure an instance of the Flask application."""
     app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
-    app.config['SQLALCHEMY_TRACK_MODIFCATIONS'] = False
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     DB.init_app(app)
-    app.run(debug=True)
-    @app.route('/add_test_users')
-    def add_users():
-        DB.drop_all()
-        DB.create_app()
-        add_test_users()
-        return 'Users Added!'
-    
-    @app.route('/view_test_users')
-    def view_users():
-        users = User.query.all()
-        return '\n'.join([str(user) for users in users])
+
     @app.route('/')
     def root():
         return render_template('base.html')
-    return app
 
+    @app.route('/add_test_users')
+    def add_users():
+        DB.drop_all()  # Reset the DB
+        DB.create_all()
+        add_test_users()
+        return 'Users added!'
+
+    @app.route('/view_test_users')
+    def view_users():
+        users = User.query.all()
+        return '\n'.join([str(user) for user in users])
+
+    return app
