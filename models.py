@@ -2,6 +2,13 @@ from flask_sqlalchemy import SQLAlchemy
 DB = SQLAlchemy()
 
 
+
+
+TWITTER_USERS = ['calebhicks', 'elonmusk', 'rrherr', 'SteveMartinToGo',
+                 'alyankovic', 'nasa', 'sadserver', 'jkhowland', 'austen',
+                 'common_squirrel', 'KenJennings', 'conanobrien',
+                 'big_ben_clock', 'IAM_SHAKESPEARE']
+
 class User(DB.Model):
     """ Twitter users."""
     id = DB.Column(DB.BigInteger, primary_key=True)
