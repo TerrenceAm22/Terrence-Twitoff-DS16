@@ -11,10 +11,8 @@ TWITTER_USERS = ['calebhicks', 'elonmusk', 'rrherr', 'SteveMartinToGo',
                  'big_ben_clock', 'IAM_SHAKESPEARE']
 
 # TODO don't check this in! Use environment variables
-TWITTER_AUTH = tweepy.OAuthHandler(
-    getenv('TWITTER_API_KEY'),
-    getenv('TWITTER_API_KEY_SECRET')
-)
+TWITTER_AUTH = tweepy.OAuthHandler(getenv('TWITTER_API'),
+                                   getenv('TWITTER_API_SECRET'))
 TWITTER = tweepy.API(TWITTER_AUTH)
 BASILICA = basilica.Connection(getenv('BASILICA_KEY'))
 
