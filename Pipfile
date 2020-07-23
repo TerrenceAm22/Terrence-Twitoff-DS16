@@ -6,10 +6,17 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-numpy = "*"
+flask = "*"
+jinja2 = "*"
+flask-sqlalchemy = "*"
+tweepy = "*"
+basilica = "*"
 scikit-learn = "*"
+getenv = "*"
+python-dotenv = "*"
 gunicorn = "*"
 psycopg2-binary = "*"
+numpy = "*"
 
 [requires]
 python_version = "3.8"
