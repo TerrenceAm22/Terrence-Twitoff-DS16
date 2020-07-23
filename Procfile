@@ -1,1 +1,1 @@
-web gunicorn terrence-twitoff-ds16:app
+web: Terrence:APP -t 120
